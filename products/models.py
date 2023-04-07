@@ -1,5 +1,6 @@
 from django.db import models
-from base.models import BaseModel
+#from base.models import BaseModel
+from base.models import *
 
 
 
@@ -17,6 +18,7 @@ class Product(BaseModel):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="products")
     price = models.IntegerField()
     product_description = models.TextField()
+
 
 
 
