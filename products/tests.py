@@ -1,29 +1,10 @@
 from django.test import TestCase
-from django.urls import reverse, resolve
-from products.views import get_product
-from .models import *
-from faker import Faker
-fake = Faker()
+from products.models import Product
 
-# Create your tests here.
+class ModelTest(TestCase):
 
-class FirstTestCase(TestCase):
-    def setUp(self):
-        print('setup called')
-
-    def test_equal(self):
-        self.assertEqual(1, 1)
-
-    #def test_get_product_urls(self):
-
-    def test_product_models(self):
-        categories = ['abc', 'def']
-        for product in categories:
-            obj = Product.objects.create(
-                product_name = product
-
-            )
-            self.assertEquals(product, obj.product_name)
-
-        objs = Product.objects.all()
-        self.assertEqual(objs.count(), 2)
+    def testProductModel(self):
+        product = Product.objects.create(name="ToyCar", price=800)
+        self.assertEquals(str(product), 'ToyCar')
+        print("IsInstance : ",isinstance(product,Product))
+        self.assertTrue(isinstance(product,Product))
